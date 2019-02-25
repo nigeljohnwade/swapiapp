@@ -1,5 +1,15 @@
-import React, { Component } from 'react';
+import React, {
+    Component
+} from 'react';
 
+import People from './People';
+import Films from './Films';
+import { PeopleContext } from './PeopleContext';
+import { FilmsContext } from './FilmsContext';
+import { PlanetsContext } from './PlanetsContext';
+import { StarshipsContext } from './StarshipsContext';
+import { SpeciesContext } from './SpeciesContext';
+import { VehiclesContext } from './VehiclesContext';
 import './App.css';
 import {
     getPeople,
@@ -10,22 +20,19 @@ import {
     getSpecies,
 } from './api/starWars';
 
-const FilmContext = React.createContext({});
-const PeopleContext = React.createContext({});
-const PlanetsContext = React.createContext({});
-const StarshipsContext = React.createContext({});
-const SpeciesContext = React.createContext({});
-const VehiclesContext = React.createContext({});
-
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             people: {
                 next: null
+            },
+            films: {
+                next: null
             }
         };
     }
+
     componentDidMount() {
         getPeople().then(data => this.setState({ people: data }));
         getPlanets().then(data => this.setState({ planets: data }));
@@ -45,6 +52,15 @@ class App extends Component {
                 }
             }));
         }
+        if (this.state.films && prevState.films && (this.state.films.next !== prevState.films.next) && this.state.films.next !== null) {
+            getPeople(this.state.films.next).then(data => this.setState({
+                films: {
+                    count: data.count,
+                    next: data.next,
+                    results: data.results.concat(this.state.films.results)
+                }
+            }));
+        }
     }
 
     render() {
@@ -60,23 +76,13 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    <FilmContext.Provider value={films}>
-                        {films &&
-                            <p>Data about all {films.count} star wars films</p>
-                        }
-                        {films && films.results.map((film) => {
-                            return <p>{film.title}</p>
-                        })}
-                    </FilmContext.Provider>
+                    <FilmsContext.Provider value={films}>
+                        <Films />
+                    </FilmsContext.Provider>
                     <PeopleContext.Provider value={people}>
-                        {people &&
-                            <p>Data about all {people.count} star wars people</p>
-                        }
-                        {people && people.results && people.results.map((person) => {
-                            return <p>{person.name}</p>
-                        })}
+                        <People />
                     </PeopleContext.Provider>
-                    <PlanetsContext.Provider value={planets}>
+                    {/* <PlanetsContext.Provider value={planets}>
                         {planets &&
                             <p>Data about all {planets.count} star wars planets</p>
                         }
@@ -95,7 +101,7 @@ class App extends Component {
                         {species &&
                             <p>Data about all {species.count} star wars species</p>
                         }
-                    </SpeciesContext.Provider>
+                    </SpeciesContext.Provider> */}
                 </header>
             </div>
         );
