@@ -75,14 +75,13 @@ class App extends Component {
 
         return (
             <div className="App">
-                <header className="App-header">
-                    <FilmsContext.Provider value={films}>
-                        <Films />
-                    </FilmsContext.Provider>
-                    <PeopleContext.Provider value={people}>
-                        <People />
-                    </PeopleContext.Provider>
-                    {/* <PlanetsContext.Provider value={planets}>
+                <FilmsContext.Provider value={films}>
+                    <Films />
+                </FilmsContext.Provider>
+                <PeopleContext.Provider value={people}>
+                    <People />
+                </PeopleContext.Provider>
+                {/* <PlanetsContext.Provider value={planets}>
                         {planets &&
                             <p>Data about all {planets.count} star wars planets</p>
                         }
@@ -102,7 +101,6 @@ class App extends Component {
                             <p>Data about all {species.count} star wars species</p>
                         }
                     </SpeciesContext.Provider> */}
-                </header>
             </div>
         );
     }
