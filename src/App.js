@@ -19,6 +19,7 @@ import {
     getFilms,
     getSpecies,
 } from './api/starWars';
+import Section from './Section';
 
 class App extends Component {
     constructor(props) {
@@ -76,10 +77,30 @@ class App extends Component {
         return (
             <div className="App">
                 <FilmsContext.Provider value={films}>
-                    <Films />
+                    <Section
+                        section={{
+                            name: "Films",
+                            count: films.count,
+                            items: films.results && films.results.map((item) => {
+                                return {
+                                    key: item.url,
+                                    listItem: item.title,
+                                }
+                            })
+                        }} />
                 </FilmsContext.Provider>
                 <PeopleContext.Provider value={people}>
-                    <People />
+                    <Section
+                        section={{
+                            name: "Peope",
+                            count: people.count,
+                            items: people.results && people.results.map((item) => {
+                                return {
+                                    key: item.url,
+                                    listItem: item.name,
+                                }
+                            })
+                        }} />
                 </PeopleContext.Provider>
                 {/* <PlanetsContext.Provider value={planets}>
                         {planets &&
