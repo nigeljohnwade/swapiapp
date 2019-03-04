@@ -16,4 +16,8 @@ const Heading = (props) => {
     )
 }
 
-export default Heading
+const areEqual = (prevProps, nextProps) => {
+    return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+}
+
+export default React.memo(Heading, areEqual);

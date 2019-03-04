@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 
-import { withFilms } from './FilmsContext';
-import Heading from './components/Heading';
-import UnorderedList from './components/UnorderedList';
+import Heading from './Heading';
+import UnorderedList from './UnorderedList';
 
-const Films = (props) => {
+const Section = (props) => {
     const { section } = props;
+
     return (
         <Fragment>
             <Heading
@@ -21,4 +21,4 @@ const Films = (props) => {
 
 }
 
-export default withFilms(Films);
+export default Section;

@@ -19,7 +19,7 @@ import {
     getFilms,
     getSpecies,
 } from './api/starWars';
-import Section from './Section';
+import Section from './components/Section';
 
 class App extends Component {
     constructor(props) {

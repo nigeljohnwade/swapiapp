@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const UnorderedList = (props) => {
     return (
@@ -14,4 +14,8 @@ const UnorderedList = (props) => {
     )
 }
 
-export default UnorderedList;
+const areEqual = (prevProps, nextProps) => {
+    return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+}
+
+export default React.memo(UnorderedList, areEqual);
