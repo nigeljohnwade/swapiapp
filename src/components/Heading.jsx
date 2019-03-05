@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 
 const Heading = (props) => {
+    console.log('render heading', props);
     return (
         <Fragment>
             {

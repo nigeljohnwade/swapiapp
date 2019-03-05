@@ -92,7 +92,7 @@ class App extends Component {
                 <PeopleContext.Provider value={people}>
                     <Section
                         section={{
-                            name: "Peope",
+                            name: "People",
                             count: people.count,
                             items: people.results && people.results.map((item) => {
                                 return {

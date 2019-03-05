@@ -4,21 +4,25 @@ import Heading from './Heading';
 import UnorderedList from './UnorderedList';
 
 const Section = (props) => {
-    const { section } = props;
+    console.log('render section', props);
 
     return (
         <Fragment>
             <Heading
-                headingText={section.name}
-                headingSubText={section.count ? `Data about all ${section.count} star wars films` : null}
+                headingText={props.section.name}
+                headingSubText={props.section.count ? `Data about all ${props.section.count} star wars ${props.section.name.toLowerCase()}` : null}
             />
             {
-                section.items &&
-                <UnorderedList items={section.items} />
+                props.section.items &&
+                <UnorderedList items={props.section.items} />
             }
         </Fragment>
     )
 
 }
 
-export default Section;
+const areEqual = (prevProps, nextProps) => {
+    return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+}
+
+export default React.memo(Section, areEqual);
