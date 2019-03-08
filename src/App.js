@@ -1,15 +1,14 @@
 import React, {
-    Component
+    Component,
+    Suspense,
 } from 'react';
 
-import People from './People';
-import Films from './Films';
 import { PeopleContext } from './PeopleContext';
 import { FilmsContext } from './FilmsContext';
-import { PlanetsContext } from './PlanetsContext';
-import { StarshipsContext } from './StarshipsContext';
-import { SpeciesContext } from './SpeciesContext';
-import { VehiclesContext } from './VehiclesContext';
+// import { PlanetsContext } from './PlanetsContext';
+// import { StarshipsContext } from './StarshipsContext';
+// import { SpeciesContext } from './SpeciesContext';
+// import { VehiclesContext } from './VehiclesContext';
 import './App.css';
 import {
     getPeople,
@@ -19,7 +18,9 @@ import {
     getFilms,
     getSpecies,
 } from './api/starWars';
-import Section from './components/Section';
+// import Section from './components/Section';
+const Section = React.lazy(() => import('./components/Section'));
+
 
 class App extends Component {
     constructor(props) {
@@ -67,40 +68,44 @@ class App extends Component {
     render() {
         const {
             people,
+            films,
             planets,
             starships,
             vehicles,
-            films,
             species,
         } = this.state;
 
         return (
             <div className="App">
                 <FilmsContext.Provider value={films}>
-                    <Section
-                        section={{
-                            name: "Films",
-                            count: films.count,
-                            items: films.results && films.results.map((item) => {
-                                return {
-                                    key: item.url,
-                                    listItem: item.title,
-                                }
-                            })
-                        }} />
+                    <Suspense fallback={<p>Loading</p>}>
+                        <Section
+                            section={{
+                                name: "Films",
+                                count: films.count,
+                                items: films.results && films.results.map((item) => {
+                                    return {
+                                        key: item.url,
+                                        listItem: item.title,
+                                    }
+                                })
+                            }} />
+                    </Suspense>
                 </FilmsContext.Provider>
                 <PeopleContext.Provider value={people}>
-                    <Section
-                        section={{
-                            name: "People",
-                            count: people.count,
-                            items: people.results && people.results.map((item) => {
-                                return {
-                                    key: item.url,
-                                    listItem: item.name,
-                                }
-                            })
-                        }} />
+                    <Suspense fallback={<p>Loading</p>}>
+                        <Section
+                            section={{
+                                name: "People",
+                                count: people.count,
+                                items: people.results && people.results.map((item) => {
+                                    return {
+                                        key: item.url,
+                                        listItem: item.name,
+                                    }
+                                })
+                            }} />
+                    </Suspense>
                 </PeopleContext.Provider>
                 {/* <PlanetsContext.Provider value={planets}>
                         {planets &&
