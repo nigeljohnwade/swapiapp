@@ -3,6 +3,7 @@
 .tile{
   border: 1px solid $brand-primary;
   &--expanded{
-    background-color: blue;
+    width: 100vw;
+    height: 100vh;
   }
 }

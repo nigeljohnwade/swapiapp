@@ -3,15 +3,10 @@ import React, {
     Suspense,
 } from 'react';
 
-import { FilmsContext } from './contexts/FilmsContext';
-import Films from './components/Films';
-import Tile from './components/Tile';
-
-import {
-    getFilms,
-} from './api/starWars';
-
-const Section = React.lazy(() => import('./components/Section'));
+import {FilmsContext} from './contexts/FilmsContext';
+import { getFilms } from './api/starWars';
+const Tile = React.lazy(() => import('./components/Tile'));
+const Films = React.lazy(() => import('./components/Films'));
 
 
 class App extends Component {
@@ -28,7 +23,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        getFilms().then(data => this.setState({ films: data }));
+        getFilms().then(data => this.setState({films: data}));
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -50,13 +45,13 @@ class App extends Component {
 
         return (
             <div className="App">
-                <FilmsContext.Provider value={films}>
-                    <Tile>
-                        <Suspense fallback={<p>Loading</p>}>
+                <Suspense fallback={<p>Loading</p>}>
+                    <FilmsContext.Provider value={films}>
+                        <Tile>
                             <Films/>
-                        </Suspense>
-                    </Tile>
-                </FilmsContext.Provider>
+                        </Tile>
+                    </FilmsContext.Provider>
+                </Suspense>
             </div>
         );
     }
