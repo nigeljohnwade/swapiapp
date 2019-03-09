@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
-import { withFilms } from './FilmsContext';
-import Heading from './components/Heading';
-import UnorderedList from './components/UnorderedList';
+import { withFilms } from '../contexts/FilmsContext';
+import Heading from './Heading';
+import UnorderedList from './UnorderedList';
 
 const Films = (props) => {
     return (

@@ -3,13 +3,13 @@ import React, {
     Suspense,
 } from 'react';
 
-import { PeopleContext } from './PeopleContext';
-import { FilmsContext } from './FilmsContext';
-// import { PlanetsContext } from './PlanetsContext';
-// import { StarshipsContext } from './StarshipsContext';
-// import { SpeciesContext } from './SpeciesContext';
-// import { VehiclesContext } from './VehiclesContext';
-import './App.css';
+import { PeopleContext } from './contexts/PeopleContext';
+import { FilmsContext } from './contexts/FilmsContext';
+// import { PlanetsContext } from './contexts/PlanetsContext';
+// import { StarshipsContext } from './contexts/StarshipsContext';
+// import { SpeciesContext } from './contexts/SpeciesContext';
+// import { VehiclesContext } from './contexts/VehiclesContext';
+
 import {
     getPeople,
     getPlanets,
@@ -69,10 +69,10 @@ class App extends Component {
         const {
             people,
             films,
-            planets,
-            starships,
-            vehicles,
-            species,
+            // planets,
+            // starships,
+            // vehicles,
+            // species,
         } = this.state;
 
         return (

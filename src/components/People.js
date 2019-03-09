@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 
-import { PeopleContext } from './PeopleContext';
-import Heading from './components/Heading';
-import UnorderedList from './components/UnorderedList';
+import { PeopleContext } from '../contexts/PeopleContext';
+import Heading from './Heading';
+import UnorderedList from './UnorderedList';
 
 class People extends React.Component {
     render() {

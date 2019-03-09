@@ -1,3 +1,14 @@
+# SWAPIAPP
+
+This project is a learning playground for ,e to familiarise myself with somee fo React's newer features like Context, Memo, Suspense, Lazy, and Hooks.
+I do not claim that I am using them in the most efficient or correct way, only that I am using them.
+
+## Intention 
+
+To consume the data from the [Star Wars API site](https://swapi.co) and display it in a browseable manner.
+The data will be presented in six section represented as tiles with each tile expandable to full screen for exploration of the data within the section.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
