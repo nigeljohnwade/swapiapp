@@ -1,0 +1,8 @@
+@import '../../styles/vars';
+
+.tile{
+  border: 1px solid $brand-primary;
+  &--expanded{
+    background-color: blue;
+  }
+}
