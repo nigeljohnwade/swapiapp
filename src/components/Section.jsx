@@ -7,19 +7,24 @@ const UnorderedList = React.lazy(() => import('./UnorderedList'));
 const Heading = React.lazy(() => import('./Heading'));
 
 const Section = (props) => {
+    const {
+        name,
+        count,
+        items,
+    } = props;
     console.log('render section', props);
 
     return (
         <Fragment>
             <Suspense fallback={<p>Loading</p>}>
                 <Heading
-                    headingText={props.section.name}
-                    headingSubText={props.section.count ? `Data about all ${props.section.count} star wars ${props.section.name.toLowerCase()}` : null}
+                    headingText={name}
+                    headingSubText={count ? `Data about all ${count} star wars ${name.toLowerCase()}` : null}
                 />
                 {
-                    props.section.items &&
+                    items &&
                     <Suspense fallback={<p>Loading</p>}>
-                        <UnorderedList items={props.section.items} />
+                        <UnorderedList items={items} />
                     </Suspense>
                 }
             </Suspense>

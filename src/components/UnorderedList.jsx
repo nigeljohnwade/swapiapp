@@ -3,11 +3,15 @@ import React from 'react';
 import ListItem from './ListItem';
 
 const UnorderedList = (props) => {
+    const {
+        items,
+    } = props;
+
     console.log('render ul', props);
     return (
         <ul>
             {
-                props.items && props.items.map((item) => {
+                items && items.map((item) => {
                     return (
                         <ListItem key={item.key} listItem={item.listItem} />
                     )

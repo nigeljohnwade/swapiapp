@@ -1,28 +1,25 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { withFilms } from '../contexts/FilmsContext';
-import Heading from './Heading';
-import UnorderedList from './UnorderedList';
+import Section from './Section';
 
 const Films = (props) => {
-    return (
-        <Fragment>
-            <Heading
-                headingText="Films"
-                headingSubText={props.films.count ? `Data about all ${props.films.count} star wars films` : null}
-            />
-            {
-                props.films.results &&
-                <UnorderedList items={props.films.results.map((item) => {
-                    return {
-                        key: item.url,
-                        listItem: item.title,
-                    }
-                })} />
-            }
-        </Fragment>
-    )
+    const {
+        films,
+    } = props;
 
+    return (
+        <Section
+            name="Films"
+            count={films.count}
+            items={films.results && films.results.map((item) => {
+                return {
+                    key: item.url,
+                    listItem: item.title,
+                }
+            })}
+        />
+        )
 }
 
 export default withFilms(Films);

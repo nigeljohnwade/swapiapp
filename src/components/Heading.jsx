@@ -1,17 +1,23 @@
 import React, { Fragment } from 'react';
 
 const Heading = (props) => {
+    const {
+        src,
+        headingText,
+        headingSubText,
+    }= props;
+
     console.log('render heading', props);
     return (
         <Fragment>
             {
-                props.src &&
-                <img src={props.src} alt="*" />
+                src &&
+                <img src={src} alt="*" />
             }
-            <h1>{props.headingText}</h1>
+            <h1>{headingText}</h1>
             {
-                props.headingSubText &&
-                <p className="sub-heading">{props.headingSubText}</p>
+                headingSubText &&
+                <p className="sub-heading">{headingSubText}</p>
             }
         </Fragment>
     )
