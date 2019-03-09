@@ -5,6 +5,7 @@ import React, {
 
 import { FilmsContext } from './contexts/FilmsContext';
 import Films from './components/Films';
+import Tile from './components/Tile';
 
 import {
     getFilms,
@@ -50,9 +51,11 @@ class App extends Component {
         return (
             <div className="App">
                 <FilmsContext.Provider value={films}>
-                    <Suspense fallback={<p>Loading</p>}>
-                        <Films/>
-                    </Suspense>
+                    <Tile>
+                        <Suspense fallback={<p>Loading</p>}>
+                            <Films/>
+                        </Suspense>
+                    </Tile>
                 </FilmsContext.Provider>
             </div>
         );
