@@ -1,5 +1,7 @@
 import React from 'react';
 
+import LinkItem from './LinkItem/LinkItem';
+
 const ListItem = (props) => {
     const {
         listItem,
@@ -7,7 +9,9 @@ const ListItem = (props) => {
 
     console.log('render li', props);
     return (
-        <li>{listItem}</li>
+        <li>
+            <LinkItem item={listItem}/>
+        </li>
     )
 }
 

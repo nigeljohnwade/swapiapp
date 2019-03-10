@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import './Tile.scss';
 
-export const Tile = (props) => {
+const Tile = (props) => {
     const [expanded, toggleExpansion] = useState(false);
 
     return (
@@ -11,9 +11,11 @@ export const Tile = (props) => {
                 className="tile__expander"
                 onClick={()=> toggleExpansion(!expanded)}
             >
-                Full screen
+                {expanded ? 'Tile' : 'Full screen'}
             </button>
             {props.children}
         </div>
     )
 }
+
+export default React.memo(Tile);

@@ -13,7 +13,7 @@ const UnorderedList = (props) => {
             {
                 items && items.map((item) => {
                     return (
-                        <ListItem key={item.key} listItem={item.listItem} />
+                        <ListItem key={item.key} listItem={item} />
                     )
                 })
             }
