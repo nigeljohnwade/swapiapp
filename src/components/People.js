@@ -19,8 +19,8 @@ class People extends React.Component {
                         return {
                             key: item.url,
                             listItem: item.name,
-                        }
-                    })} />
+                        }})}
+                    />
                 }
             </Fragment>
         )

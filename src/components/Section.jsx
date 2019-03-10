@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense } from 'react';
+import React, {Fragment, Suspense} from 'react';
 
 // import Heading from './Heading';
 // import UnorderedList from './UnorderedList';
@@ -15,20 +15,18 @@ const Section = (props) => {
     console.log('render section', props);
 
     return (
-        <Fragment>
-            <Suspense fallback={<p>Loading</p>}>
-                <Heading
-                    headingText={name}
-                    headingSubText={count ? `Data about all ${count} star wars ${name.toLowerCase()}` : null}
-                />
-                {
-                    items &&
-                    <Suspense fallback={<p>Loading</p>}>
-                        <UnorderedList items={items} />
-                    </Suspense>
-                }
-            </Suspense>
-        </Fragment>
+        <Suspense fallback={<p>Loading</p>}>
+            <Heading
+                headingText={name}
+                headingSubText={count ? `Data about all ${count} star wars ${name.toLowerCase()}` : null}
+            />
+            {
+                items &&
+                <Suspense fallback={<p>Loading</p>}>
+                    <UnorderedList items={items}/>
+                </Suspense>
+            }
+        </Suspense>
     )
 
 }

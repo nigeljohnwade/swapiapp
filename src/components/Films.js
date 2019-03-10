@@ -19,7 +19,7 @@ const Films = (props) => {
                 }
             })}
         />
-        )
+    )
 }
 
 export default withFilms(Films);
