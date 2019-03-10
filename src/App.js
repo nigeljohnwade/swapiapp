@@ -13,9 +13,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            people: {
-                next: null
-            },
             films: {
                 next: null
             }
@@ -27,12 +24,14 @@ class App extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.state.films && prevState.films && (this.state.films.next !== prevState.films.next) && this.state.films.next !== null) {
-            getFilms(this.state.films.next).then(data => this.setState({
+        const {films} = this.state;
+
+        if (films && prevState.films && (films.next !== prevState.films.next) && films.next !== null) {
+            getFilms(films.next).then(data => this.setState({
                 films: {
                     count: data.count,
                     next: data.next,
-                    results: data.results.concat(this.state.films.results)
+                    results: data.results.concat(films.results)
                 }
             }));
         }
