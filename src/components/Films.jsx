@@ -3,11 +3,7 @@ import React from 'react';
 import { withFilms } from '../contexts/FilmsContext';
 import Section from './Section';
 
-const Films = (props) => {
-    const {
-        films,
-    } = props;
-
+const Films = ({ films }) => {
     return (
         <Section
             name="Films"
@@ -15,7 +11,7 @@ const Films = (props) => {
             items={films.results && films.results.map((item) => {
                 return {
                     key: item.url,
-                    listItem: item.title,
+                    displayText: item.title,
                 }
             })}
         />

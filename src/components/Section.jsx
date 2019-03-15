@@ -1,10 +1,9 @@
-import React, {Fragment, Suspense} from 'react';
+import React, { lazy, Suspense } from 'react';
 
-// import Heading from './Heading';
-// import UnorderedList from './UnorderedList';
-
-const UnorderedList = React.lazy(() => import('./UnorderedList'));
-const Heading = React.lazy(() => import('./Heading'));
+const UnorderedList = lazy(() => import('./UnorderedList'));
+const ListItem = lazy(() => import('./ListItem'));
+const LinkItem = lazy(() => import('./LinkItem'));
+const Heading = lazy(() => import('./Heading'));
 
 const Section = (props) => {
     const {
@@ -12,7 +11,6 @@ const Section = (props) => {
         count,
         items,
     } = props;
-    console.log('render section', props);
 
     return (
         <Suspense fallback={<p>Loading</p>}>
@@ -23,7 +21,17 @@ const Section = (props) => {
             {
                 items &&
                 <Suspense fallback={<p>Loading</p>}>
-                    <UnorderedList items={items}/>
+                    <UnorderedList>
+                        {
+                            items.map(item => {
+                                return (
+                                    <ListItem key={item.key}>
+                                        <LinkItem linkItemUrl={item.key} linkItemText={item.displayText}></LinkItem>
+                                    </ListItem>
+                                )
+                            })
+                        }
+                    </UnorderedList>
                 </Suspense>
             }
         </Suspense>

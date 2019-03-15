@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 
-const Heading = (props) => {
-    const {
-        src,
-        headingText,
-        headingSubText,
-    }= props;
+const Heading = ({
+    src,
+    headingText,
+    headingSubText,
+}) => {
 
-    console.log('render heading', props);
+    console.log('render heading', headingText);
+
     return (
         <Fragment>
             {

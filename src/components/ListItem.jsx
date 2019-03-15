@@ -1,18 +1,11 @@
-import React from 'react';
-
-import LinkItem from './LinkItem/LinkItem';
+import React, { memo } from 'react';
 
 const ListItem = (props) => {
-    const {
-        listItem,
-    } = props;
-
-    console.log('render li', props);
     return (
         <li>
-            <LinkItem item={listItem}/>
+            {props.children}
         </li>
     )
 }
 
-export default React.memo(ListItem);
+export default memo(ListItem);

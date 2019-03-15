@@ -1,18 +1,15 @@
-import React from'react';
+import React from 'react';
 
 import './LinkItem.scss';
 
-const LinkItem = (props) =>{
-    const {
-        item
-    } = props;
+const LinkItem = ({ linkItemText, linkItemUrl }) => {
 
-    return(
+    return (
         <a
             className="link-item"
-            href={item.key}
+            href={linkItemUrl}
         >
-            {item.listItem}
+            {linkItemText}
         </a>
     )
 }

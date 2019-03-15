@@ -1,31 +1,26 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-import { PeopleContext } from '../contexts/PeopleContext';
-import Heading from './Heading';
-import UnorderedList from './UnorderedList';
+import { withPeople } from '../contexts/PeopleContext';
+import Section from './Section';
 
-class People extends React.Component {
-    render() {
-        const people = this.context;
-        return (
-            <Fragment>
-                <Heading
-                    headingText="People"
-                    headingSubText={`Data about all ${people.count} star wars people`}
-                />
-                {
-                    people.results &&
-                    <UnorderedList items={people.results.map((item) => {
-                        return {
-                            key: item.url,
-                            listItem: item.name,
-                        }})}
-                    />
+const People = (props) => {
+    const {
+        filter,
+        people,
+    } = props;
+
+    return (
+        <Section
+            name="People"
+            count={people.count}
+            items={people.results && people.results.map((item) => {
+                return {
+                    key: item.url,
+                    listItem: item.name,
                 }
-            </Fragment>
-        )
-    }
+            })}
+        />
+    )
 }
 
-People.contextType = PeopleContext;
-export default People;
+export default withPeople(People);
