@@ -32,7 +32,12 @@ class App extends Component {
     }
 
     componentDidMount() {
-        getFilms().then(data => this.setState({ films: data }));
+        getFilms().then(data => {
+            data.results.sort((a, b)=>{
+                return a.episode_id - b.episode_id;
+            })
+            this.setState({films: data})
+        });
         getPeople().then(data => this.setState({ people: data }));
     }
 
@@ -44,7 +49,9 @@ class App extends Component {
                 films: {
                     count: data.count,
                     next: data.next,
-                    results: data.results.concat(films.results)
+                    results: data.results.concat(films.results).sort((a, b)=>{
+                        return a.episode_id - b.episode_id;
+                    })
                 }
             }));
         }
