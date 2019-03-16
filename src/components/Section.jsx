@@ -21,7 +21,7 @@ const Section = (props) => {
             {
                 items &&
                 <Suspense fallback={<p>Loading</p>}>
-                    <List>
+                    <List ordered roman>
                         {
                             items.map(item => {
                                 return (
