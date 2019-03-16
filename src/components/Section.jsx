@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 
-const UnorderedList = lazy(() => import('./UnorderedList'));
+const List = lazy(() => import('./List'));
 const ListItem = lazy(() => import('./ListItem'));
 const LinkItem = lazy(() => import('./LinkItem'));
 const Heading = lazy(() => import('./Heading'));
@@ -21,17 +21,20 @@ const Section = (props) => {
             {
                 items &&
                 <Suspense fallback={<p>Loading</p>}>
-                    <UnorderedList>
+                    <List>
                         {
                             items.map(item => {
                                 return (
                                     <ListItem key={item.key}>
-                                        <LinkItem linkItemUrl={item.key} linkItemText={item.displayText}></LinkItem>
+                                        <LinkItem
+                                            linkItemUrl={item.key}
+                                            linkItemText={item.displayText}
+                                        />
                                     </ListItem>
                                 )
                             })
                         }
-                    </UnorderedList>
+                    </List>
                 </Suspense>
             }
         </Suspense>
