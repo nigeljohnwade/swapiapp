@@ -5,12 +5,7 @@ const ListItem = lazy(() => import('./ListItem'));
 const LinkItem = lazy(() => import('./LinkItem'));
 const Heading = lazy(() => import('./Heading'));
 
-const Section = (props) => {
-    const {
-        name,
-        count,
-        items,
-    } = props;
+const Section = ({name, count, items}) => {
 
     return (
         <Suspense fallback={<p>Loading</p>}>
@@ -42,8 +37,4 @@ const Section = (props) => {
 
 }
 
-const areEqual = (prevProps, nextProps) => {
-    return JSON.stringify(prevProps) === JSON.stringify(nextProps);
-}
-
-export default React.memo(Section, areEqual);
+export default React.memo(Section);
