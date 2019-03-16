@@ -1,6 +1,7 @@
 @import '../../styles/vars';
 
 .tile{
+  padding :$base-unit * 4;
   border: 1px solid $brand-primary;
   &--expanded{
     width: 100vw;
