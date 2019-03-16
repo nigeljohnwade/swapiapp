@@ -2,9 +2,9 @@ import React from 'react';
 
 const OrderedList = (props) => {
     return (
-        <ul>
+        <ol className={props.className}>
             {props.children}
-        </ul>
+        </ol>
     )
 }
 

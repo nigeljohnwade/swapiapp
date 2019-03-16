@@ -2,7 +2,7 @@ import React from 'react';
 
 const UnorderedList = (props) => {
     return (
-        <ul>
+        <ul className={props.className}>
             {props.children}
         </ul>
     )

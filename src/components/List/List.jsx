@@ -3,13 +3,19 @@ import React from 'react';
 import UnorderedList from "./UnorderedList";
 import OrderedList from './OrderedList';
 
-const List = (props) => {
-    const element = props.ordered
-        ? <OrderedList>
-                {props.children}
+import './List.scss';
+
+const List = ({children, inside, ordered, roman}) => {
+    const listClassArray = [];
+    inside && listClassArray.push('list--inside');
+    roman && listClassArray.push('list--roman');
+    const classNameString = `list ${listClassArray.join('')}`
+    const element = ordered
+        ? <OrderedList className={classNameString}>
+                {children}
             </OrderedList>
-        :<UnorderedList>
-            {props.children}
+        :<UnorderedList className={classNameString}>
+            {children}
         </UnorderedList>;
 
     return element
