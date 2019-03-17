@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 
 const Heading = ({
     src,
@@ -23,8 +23,4 @@ const Heading = ({
     )
 }
 
-const areEqual = (prevProps, nextProps) => {
-    return JSON.stringify(prevProps) === JSON.stringify(nextProps);
-}
-
-export default React.memo(Heading, areEqual);
+export default memo(Heading);

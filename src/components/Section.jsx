@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, memo } from 'react';
 
 const List = lazy(() => import('./List'));
 const ListItem = lazy(() => import('./ListItem'));
@@ -37,4 +37,4 @@ const Section = ({name, count, items}) => {
 
 }
 
-export default React.memo(Section);
+export default memo(Section);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import './LinkItem.scss';
 
@@ -14,4 +14,4 @@ const LinkItem = ({ linkItemText, linkItemUrl }) => {
     )
 }
 
-export default React.memo(LinkItem)
+export default memo(LinkItem)

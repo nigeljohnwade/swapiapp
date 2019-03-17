@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import UnorderedList from "./UnorderedList";
 import OrderedList from './OrderedList';
@@ -21,4 +21,4 @@ const List = ({children, inside, ordered, roman}) => {
     return element
 }
 
-export default React.memo(List);
+export default memo(List);

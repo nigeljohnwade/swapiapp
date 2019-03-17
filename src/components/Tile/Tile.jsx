@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import React, {
+    memo,
+    useState,
+} from 'react';
 
 import './Tile.scss';
 
@@ -18,4 +21,4 @@ const Tile = (props) => {
     )
 }
 
-export default React.memo(Tile);
+export default memo(Tile);

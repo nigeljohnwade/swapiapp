@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const OrderedList = (props) => {
     return (
@@ -8,4 +8,4 @@ const OrderedList = (props) => {
     )
 }
 
-export default React.memo(OrderedList);
+export default memo(OrderedList);

@@ -44,10 +44,7 @@ const App = () => {
                     })}/>
             </Tile>
         </Suspense>
-
-    )
-        ;
-
+    );
 }
 
 export default App;

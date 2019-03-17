@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const UnorderedList = (props) => {
     return (
@@ -8,4 +8,4 @@ const UnorderedList = (props) => {
     )
 }
 
-export default React.memo(UnorderedList);
+export default memo(UnorderedList);
