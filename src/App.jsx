@@ -1,98 +1,53 @@
 import React, {
-    Component,
+    useEffect,
+    useState,
     Suspense,
 } from 'react';
 
-import { FilmsContext } from './contexts/FilmsContext';
-import { PeopleContext } from './contexts/PeopleContext';
-import { getFilms, getPeople } from './api/starWars';
+import {getFilms} from './api/starWars';
+
+const Section = React.lazy(() => import('./components/Section'));
 const Tile = React.lazy(() => import('./components/Tile'));
-const Films = React.lazy(() => import('./components/Films'));
-const People = React.lazy(() => import('./components/People'));
 
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            films: {
-                count: null,
-                next: null,
-                results: [],
-            },
-            people: {
-                count: null,
-                next: null,
-                results: [],
-            },
-            filter: {
-                value: 'https://swapi.co/api/films/1/'
-            }
-        };
-    }
+const App = () => {
+    const initialFilmsState = {
+        count: null,
+        next: 'https://swapi.co/api/films/',
+        results: [],
+    };
+    const [films, updateFilmsState] = useState(initialFilmsState);
 
-    componentDidMount() {
-        getFilms().then(data => {
-            data.results.sort((a, b)=>{
-                return a.episode_id - b.episode_id;
-            })
-            this.setState({films: data})
-        });
-        getPeople().then(data => this.setState({ people: data }));
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        const { films, people } = this.state;
-
-        if (films && prevState.films && (films.next !== prevState.films.next) && films.next !== null) {
-            getFilms(films.next).then(data => this.setState({
-                films: {
-                    count: data.count,
-                    next: data.next,
-                    results: data.results.concat(films.results).sort((a, b)=>{
-                        return a.episode_id - b.episode_id;
-                    })
-                }
+    useEffect(() => {
+        if (films.next !== null) {
+            getFilms(films.next).then(data => updateFilmsState({
+                count: data.count,
+                next: data.next,
+                results: data.results.concat(films.results).sort((a, b) => {
+                    return a.episode_id - b.episode_id;
+                })
             }));
         }
+    });
 
-        if (people && prevState.people && (people.next !== prevState.people.next) && people.next !== null) {
-            getPeople(people.next).then(data => this.setState({
-                people: {
-                    count: data.count,
-                    next: data.next,
-                    results: data.results.concat(people.results)
-                }
-            }));
-        }
-    }
+    return (
+        <Suspense fallback={<p>Loading</p>}>
+            <Tile>
+                <Section
+                    count={films.count}
+                    name="Films"
+                    items={films.results.map((item) => {
+                        return {
+                            key: item.url,
+                            displayText: item.title,
+                        }
+                    })}/>
+            </Tile>
+        </Suspense>
 
-    render() {
-        const {
-            films,
-            filter,
-            people,
-        } = this.state;
+    )
+        ;
 
-        return (
-            <div className="App">
-                <Suspense fallback={<p>Loading</p>}>
-                    <FilmsContext.Provider value={films} >
-                        <Tile>
-                            <Films />
-                        </Tile>
-                    </FilmsContext.Provider>
-                </Suspense>
-                {/* <Suspense fallback={<p>Loading</p>}>
-                    <PeopleContext.Provider value={people}>
-                        <Tile>
-                            <People filter={filter}/>
-                        </Tile>
-                    </PeopleContext.Provider>
-                </Suspense> */}
-            </div>
-        );
-    }
 }
 
 export default App;
