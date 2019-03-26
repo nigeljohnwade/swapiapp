@@ -5,7 +5,7 @@ const ListItem = lazy(() => import('./ListItem'));
 const LinkItem = lazy(() => import('./LinkItem'));
 const Heading = lazy(() => import('./Heading'));
 
-const Section = ({name, count, items}) => {
+const Section = ({ name, count, items, selectHandler }) => {
 
     return (
         <Suspense fallback={<p>Loading</p>}>
@@ -24,6 +24,7 @@ const Section = ({name, count, items}) => {
                                         <LinkItem
                                             linkItemUrl={item.key}
                                             linkItemText={item.displayText}
+                                            clickHandler={selectHandler}
                                         />
                                     </ListItem>
                                 )

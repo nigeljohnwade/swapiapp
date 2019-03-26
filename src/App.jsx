@@ -4,7 +4,8 @@ import React, {
     Suspense,
 } from 'react';
 
-import {getFilms} from './api/starWars';
+import { getFilms } from './api/starWars';
+import Details from './components/Details';
 
 const Section = React.lazy(() => import('./components/Section'));
 const Tile = React.lazy(() => import('./components/Tile'));
@@ -35,13 +36,26 @@ const App = () => {
             <Tile>
                 <Section
                     count={films.count}
-                    name="Films"
                     items={films.results.map((item) => {
                         return {
                             key: item.url,
                             displayText: item.title,
                         }
-                    })}/>
+                    })}
+                    name="Films"
+                    selectHandler={(e) => {
+                        console.log(e.target.href);
+                        updateFilmsState({
+                            ...films,
+                            highlightedItem: films.results.filter(item => item.url === e.target.href)
+                        })
+                    }}
+                />
+
+                {
+                    films.highlightedItem &&
+                    <Details item={films.highlightedItem} />
+                }
             </Tile>
         </Suspense>
     );
