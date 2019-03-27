@@ -1,18 +1,18 @@
 .opening-crawl {
-  text-align: center;
+  //text-align: center;
   overflow: hidden;
-  &__perspective-wrapper {
-    perspective: 100px;
-  }
-
-  &__transform-wrapper {
-    transform: rotateX(50deg) translateY(400px);
-    animation: scrolling-titles 60s 30s;
-  }
-
-  &__title {
-    font-family: Univers, san-serif;
-  }
+  //&__perspective-wrapper {
+  //  perspective: 100px;
+  //}
+  //
+  //&__transform-wrapper {
+  //  transform: rotateX(50deg) translateY(400px);
+  //  animation: scrolling-titles 60s 30s;
+  //}
+  //
+  //&__title {
+  //  font-family: Univers, san-serif;
+  //}
 
   &__body {
     font-family: "news-gothic-std", sans-serif;

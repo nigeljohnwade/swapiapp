@@ -47,14 +47,14 @@ const App = () => {
                         console.log(e.target.href);
                         updateFilmsState({
                             ...films,
-                            highlightedItem: films.results.filter(item => item.url === e.target.href)
+                            highlightedItem: films.results.filter(item => item.url === e.target.href)[0]
                         })
                     }}
                 />
 
                 {
                     films.highlightedItem &&
-                    <Details item={films.highlightedItem} />
+                    <Details {...films.highlightedItem} />
                 }
             </Tile>
         </Suspense>

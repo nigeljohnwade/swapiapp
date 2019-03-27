@@ -1,10 +1,26 @@
-import React, { memo } from 'react';
+import React, {memo} from 'react';
+import OpeningCrawl from "../OpeningCrawl";
+import Credits from "../Credits";
 
-function Details(props) {
-    console.log(props);
+function Details({
+    opening_crawl,
+    title,
+    director,
+    producer,
+    release_date,
+}) {
     return (
         <div className="details">
-            <p>Detail</p>
+            <h4>Details</h4>
+            <OpeningCrawl
+                text={opening_crawl}
+                title={title}
+            />
+            <Credits
+                director={director}
+                producer={producer}
+            />
+            <p>Released on {release_date}</p>
         </div>
     )
 }
