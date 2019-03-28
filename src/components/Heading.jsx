@@ -6,8 +6,6 @@ const Heading = ({
     headingSubText,
 }) => {
 
-    console.log('render heading', headingText);
-
     return (
         <Fragment>
             {

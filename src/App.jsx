@@ -1,25 +1,24 @@
 import React, {
-    useEffect,
-    useState,
+    lazy,
     Suspense,
 } from 'react';
 
 import useFilmsState from './hooks/useFilmsState';
-import Details from './components/Details';
 
-const Section = React.lazy(() => import('./components/Section'));
-const Tile = React.lazy(() => import('./components/Tile'));
+const Details = lazy(()=>import('./components/Details'));
+const Section = lazy(() => import('./components/Section'));
+const Tile = lazy(() => import('./components/Tile'));
 
 
 const App = () => {
-    const films = useFilmsState();
+    const filmsState = useFilmsState();
 
     return (
         <Suspense fallback={<p>Loading</p>}>
             <Tile>
                 <Section
-                    count={films.films.count}
-                    items={films.films.results.map((item) => {
+                    count={filmsState.films.count}
+                    items={filmsState.films.results.map((item) => {
                         return {
                             key: item.url,
                             displayText: item.title,
@@ -27,17 +26,16 @@ const App = () => {
                     })}
                     name="Films"
                     selectHandler={(e) => {
-                        console.log(e.target.href);
-                        films.updateFilmsState({
-                            ...films.films,
-                            highlightedItem: films.films.results.filter(item => item.url === e.target.href)[0]
+                        filmsState.updateFilmsState({
+                            ...filmsState.films,
+                            highlightedItem: filmsState.films.results.filter(item => item.url === e.target.href)[0]
                         })
                     }}
                 />
 
                 {
-                    films.films.highlightedItem &&
-                    <Details {...films.films.highlightedItem} />
+                    filmsState.films.highlightedItem &&
+                    <Details {...filmsState.films.highlightedItem} />
                 }
             </Tile>
         </Suspense>
