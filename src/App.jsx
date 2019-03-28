@@ -4,7 +4,7 @@ import React, {
     Suspense,
 } from 'react';
 
-import { getFilms } from './api/starWars';
+import useFilmsState from './hooks/useFilmsState';
 import Details from './components/Details';
 
 const Section = React.lazy(() => import('./components/Section'));
@@ -12,31 +12,14 @@ const Tile = React.lazy(() => import('./components/Tile'));
 
 
 const App = () => {
-    const initialFilmsState = {
-        count: null,
-        next: 'https://swapi.co/api/films/',
-        results: [],
-    };
-    const [films, updateFilmsState] = useState(initialFilmsState);
-
-    useEffect(() => {
-        if (films.next !== null) {
-            getFilms(films.next).then(data => updateFilmsState({
-                count: data.count,
-                next: data.next,
-                results: data.results.concat(films.results).sort((a, b) => {
-                    return a.episode_id - b.episode_id;
-                })
-            }));
-        }
-    });
+    const films = useFilmsState();
 
     return (
         <Suspense fallback={<p>Loading</p>}>
             <Tile>
                 <Section
-                    count={films.count}
-                    items={films.results.map((item) => {
+                    count={films.films.count}
+                    items={films.films.results.map((item) => {
                         return {
                             key: item.url,
                             displayText: item.title,
@@ -45,16 +28,16 @@ const App = () => {
                     name="Films"
                     selectHandler={(e) => {
                         console.log(e.target.href);
-                        updateFilmsState({
-                            ...films,
-                            highlightedItem: films.results.filter(item => item.url === e.target.href)[0]
+                        films.updateFilmsState({
+                            ...films.films,
+                            highlightedItem: films.films.results.filter(item => item.url === e.target.href)[0]
                         })
                     }}
                 />
 
                 {
-                    films.highlightedItem &&
-                    <Details {...films.highlightedItem} />
+                    films.films.highlightedItem &&
+                    <Details {...films.films.highlightedItem} />
                 }
             </Tile>
         </Suspense>
