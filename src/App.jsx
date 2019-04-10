@@ -1,14 +1,13 @@
 import React, {
-    useEffect,
-    useState,
+    lazy,
     Suspense,
 } from 'react';
 
 import useFilmsState from './hooks/useFilmsState';
-import Details from './components/Details';
 
-const Section = React.lazy(() => import('./components/Section'));
-const Tile = React.lazy(() => import('./components/Tile'));
+const Details = lazy(() => import('./components/Details'));
+const Section = lazy(() => import('./components/Section'));
+const Tile = lazy(() => import('./components/Tile'));
 
 
 const App = () => {
