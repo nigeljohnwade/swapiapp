@@ -16,6 +16,10 @@ const App = () => {
             <FilmsTile films={filmsState} />
         </Suspense>
     );
+
+
+
+
 }
 
 export default App;
