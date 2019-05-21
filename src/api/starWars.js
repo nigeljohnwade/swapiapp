@@ -1,3 +1,4 @@
+import { api as filmsApi } from '../models/filmsModel';
 const routes = {
     "people": "https://swapi.co/api/people/",
     "planets": "https://swapi.co/api/planets/",
@@ -9,6 +10,15 @@ const routes = {
 
 const getData = (url) => {
     return fetch(url, { method: 'GET' })
+        .then(response => {
+            if (response.ok) {
+                return response;
+            } else {
+                const error = new Error('Response not OK');
+                error.response = response;
+                throw error;
+            }
+        })
         .then(response => response.json())
         .then(data => data);
 }
@@ -34,5 +44,5 @@ export const getVehicles = () => {
 }
 
 export const getFilms = () => {
-    return getData(routes.films);
+    return getData(filmsApi.get.all.endpoint);
 }
