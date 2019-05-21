@@ -1,9 +1,9 @@
 import React, { lazy, Suspense, memo } from 'react';
 
-const List = lazy(() => import('./List'));
-const ListItem = lazy(() => import('./ListItem'));
-const LinkItem = lazy(() => import('./LinkItem'));
-const Heading = lazy(() => import('./Heading'));
+const List = lazy(() => import('../List'));
+const ListItem = lazy(() => import('../ListItem'));
+const LinkItem = lazy(() => import('../LinkItem'));
+const Heading = lazy(() => import('../Heading'));
 
 const Section = ({ name, count, items, selectHandler }) => {
 

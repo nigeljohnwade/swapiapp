@@ -1,8 +1,8 @@
 import React, { lazy } from 'react';
 
-const Tile = lazy(()=>import('./Tile'));
-const Section = lazy(()=> import('./Section'));
-const Details = lazy(()=> import('./Details'));
+const Tile = lazy(() => import('./Tile'));
+const Section = lazy(() => import('./Section'));
+const Details = lazy(() => import('./Details'));
 
 const FilmsTile = ({ films }) => {
     return (
