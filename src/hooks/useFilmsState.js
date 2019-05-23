@@ -16,7 +16,7 @@ function useFilmsState() {
                 count: data.count,
                 next: data.next,
                 results: data.results.concat(films.results).sort((a, b) => {
-                    return a.episode_id - b.episode_id;
+                    return a.episodeNumber - b.episodeNumber;
                 })
             }));
         }

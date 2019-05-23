@@ -8,13 +8,14 @@ export const api = {
                         count: data.count,
                         next: data.next,
                         previous: data.previous,
-                        films: data.map((item) => {
+                        results: data.results.map((item) => {
                             return {
                                 title: item.title,
                                 episodeNumber: item.episode_id,
                             }
                         }),
                     };
+                    return returnObject;
                 }
             }
         },

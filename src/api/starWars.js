@@ -44,5 +44,6 @@ export const getVehicles = () => {
 }
 
 export const getFilms = () => {
-    return getData(filmsApi.get.all.endpoint);
+    return getData(filmsApi.get.all.endpoint)
+        .then(data => filmsApi.get.all.transformers.list(data));
 }
