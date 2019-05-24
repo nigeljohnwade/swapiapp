@@ -12,6 +12,11 @@ export const api = {
                             return {
                                 title: item.title,
                                 episodeNumber: item.episode_id,
+                                url: item.url,
+                                opening_crawl: item.opening_crawl,
+                                director: item.director,
+                                producer: item.producer,
+                                release_date: item.release_date
                             }
                         }),
                     };
