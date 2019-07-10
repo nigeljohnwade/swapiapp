@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 
 import useFilmsState from './hooks/useFilmsState';
-
+import { FilmsContext } from './contexts/FilmsContext';
 const FilmsTile = lazy(() => import('./components/FilmsTile'));
 
 
@@ -13,7 +13,9 @@ const App = () => {
 
     return (
         <Suspense fallback={<p>Loading</p>}>
-            <FilmsTile films={filmsState} />
+            <FilmsContext.Provider value={filmsState}>
+                <FilmsTile />
+            </FilmsContext.Provider>
         </Suspense>
     );
 
