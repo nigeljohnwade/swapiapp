@@ -9,7 +9,8 @@ const FilmsTile = () => {
     return (
         <Tile>
             <FilmsContext.Consumer>
-                {({ films }) => (
+                {({ films, updateFilmsState }) => (
+                  <>
                     <Section
                         count={films.count}
                         items={films.results.map((item) => {
@@ -20,17 +21,18 @@ const FilmsTile = () => {
                         })}
                         name="Films"
                         selectHandler={(e) => {
-                            films.updateFilmsState({
+                            updateFilmsState({
                                 ...films,
                                 highlightedItem: films.results.filter(item => item.url === e.target.href)[0]
                             })
                         }}
                     />
 
-                    // {
-                    // films.films.highlightedItem &&
-                    //     <Details {...films.films.highlightedItem} />
-                    // }
+                    {
+                    films.highlightedItem &&
+                        <Details {...films.highlightedItem} />
+                    }
+                    </>
                 )}
             </FilmsContext.Consumer>
         </Tile>
