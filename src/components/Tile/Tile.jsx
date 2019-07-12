@@ -5,18 +5,18 @@ import React, {
 
 import './Tile.scss';
 
-const Tile = (props) => {
-    const [expanded, toggleExpansion] = useState(false);
+const Tile = ({children}) => {
+    const [isExpanded, toggleExpansion] = useState(false);
 
     return (
-        <div className={`tile ${expanded && 'tile--expanded'}`}>
+        <div className={`tile ${isExpanded && 'tile--expanded'}`}>
             <button
                 className="tile__expander"
-                onClick={()=> toggleExpansion(!expanded)}
+                onClick={()=> toggleExpansion(!isExpanded)}
             >
-                {expanded ? 'Tile' : 'Full screen'}
+                {isExpanded ? 'Tile' : 'Full screen'}
             </button>
-            {props.children}
+            {children}
         </div>
     )
 }

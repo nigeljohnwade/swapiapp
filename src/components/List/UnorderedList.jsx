@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 
-const UnorderedList = (props) => {
+const UnorderedList = ({className, children, ...rest}) => {
     return (
-        <ul className={props.className}>
-            {props.children}
+        <ul className={className} {...rest}>
+            {children}
         </ul>
     )
 }

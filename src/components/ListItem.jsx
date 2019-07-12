@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 
-const ListItem = (props) => {
+const ListItem = ({children, ...rest}) => {
     return (
-        <li>
-            {props.children}
+        <li {...rest}>
+            {children}
         </li>
     )
 }

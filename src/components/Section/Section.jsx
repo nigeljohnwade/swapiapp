@@ -16,8 +16,7 @@ const Section = ({ name, count, items, selectHandler }) => {
             {
                 items &&
                 <Suspense fallback={<p>Loading</p>}>
-                    <List ordered roman>
-                        {
+                    <List ordered roman>{
                             items.map(item => {
                                 return (
                                     <ListItem key={item.key}>

@@ -1,4 +1,7 @@
-import React, { lazy, useContext } from 'react';
+import React, {
+    lazy,
+    useContext
+} from 'react';
 
 import { FilmsContext } from '../contexts/FilmsContext';
 
@@ -6,7 +9,7 @@ const Tile = lazy(() => import('./Tile'));
 const Section = lazy(() => import('./Section'));
 const Details = lazy(() => import('./Details'));
 
-const FilmsWithContextHook = (props) => {
+const FilmsWithContextHook = () => {
     const {films, updateFilmsState} = useContext(FilmsContext);
 
     return (

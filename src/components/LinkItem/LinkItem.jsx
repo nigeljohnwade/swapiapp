@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import './LinkItem.scss';
 
-const LinkItem = ({ clickHandler, linkItemText, linkItemUrl }) => {
+const LinkItem = ({ clickHandler, linkItemText, linkItemUrl, ...rest }) => {
 
     return (
         <a
@@ -12,6 +12,7 @@ const LinkItem = ({ clickHandler, linkItemText, linkItemUrl }) => {
                 e.preventDefault();
                 clickHandler(e);
             }}
+            {...rest}
         >
             {linkItemText}
         </a>

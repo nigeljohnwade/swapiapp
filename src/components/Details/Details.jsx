@@ -1,4 +1,5 @@
 import React, {memo} from 'react';
+
 import OpeningCrawl from "../OpeningCrawl";
 import Credits from "../Credits";
 

@@ -1,10 +1,9 @@
-import React, { Fragment, memo } from 'react';
+import React, {
+    Fragment,
+    memo
+} from 'react';
 
-const Heading = ({
-    src,
-    headingText,
-    headingSubText,
-}) => {
+const Heading = ({src, headingText, headingSubText, ...rest}) => {
 
     return (
         <Fragment>
@@ -12,7 +11,7 @@ const Heading = ({
                 src &&
                 <img src={src} alt="*" />
             }
-            <h2>{headingText}</h2>
+            <h2 {...rest}>{headingText}</h2>
             {
                 headingSubText &&
                 <p className="sub-heading">{headingSubText}</p>
