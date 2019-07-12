@@ -5,7 +5,9 @@ import React, {
 
 import useFilmsState from './hooks/useFilmsState';
 import { FilmsContext } from './contexts/FilmsContext';
-const FilmsTile = lazy(() => import('./components/FilmsTile'));
+const FilmsWithConsumer = lazy(() => import('./components/FilmsWithConsumer'));
+const Films = lazy(() => import('./components/FilmsWithHOC'));
+const FilmsWithContextHook = lazy(() => import('./components/FilmsWithContextHook'));
 
 
 const App = () => {
@@ -14,14 +16,12 @@ const App = () => {
     return (
         <Suspense fallback={<p>Loading</p>}>
             <FilmsContext.Provider value={filmsState}>
-                <FilmsTile />
+                <FilmsWithConsumer />
+                <Films />
+                <FilmsWithContextHook />
             </FilmsContext.Provider>
         </Suspense>
     );
-
-
-
-
 }
 
 export default App;
