@@ -5,9 +5,9 @@ import React, {
 
 import useFilmsState from './hooks/useFilmsState';
 import { FilmsContext } from './contexts/FilmsContext';
-const FilmsWithConsumer = lazy(() => import('./components/FilmsWithConsumer'));
-const Films = lazy(() => import('./components/FilmsWithHOC'));
-const FilmsWithContextHook = lazy(() => import('./components/FilmsWithContextHook'));
+const FilmsWithConsumer = lazy(() => import('./components/FilmsContextConsumers/FilmsWithConsumer'));
+const Films = lazy(() => import('./components/FilmsContextConsumers/FilmsWithHOC'));
+const FilmsWithContextHook = lazy(() => import('./components/FilmsContextConsumers/FilmsWithContextHook'));
 
 
 const App = () => {

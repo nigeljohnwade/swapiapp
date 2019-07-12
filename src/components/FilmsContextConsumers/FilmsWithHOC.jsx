@@ -1,10 +1,10 @@
 import React, { lazy } from 'react';
 
-import { withFilms } from '../contexts/FilmsContext';
+import { withFilms } from '../../contexts/FilmsContext';
 
-const Tile = lazy(() => import('./Tile'));
-const Section = lazy(() => import('./Section'));
-const Details = lazy(() => import('./Details'));
+const Tile = lazy(() => import('../Tile'));
+const Section = lazy(() => import('../Section'));
+const Details = lazy(() => import('../Details'));
 
 const FilmsWithHOC = (props) => {
     const {films, updateFilmsState} = props.films;

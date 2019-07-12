@@ -1,10 +1,10 @@
 import React, { lazy } from 'react';
 
-import { FilmsContext } from '../contexts/FilmsContext';
+import { FilmsContext } from '../../contexts/FilmsContext';
 
-const Tile = lazy(() => import('./Tile'));
-const Section = lazy(() => import('./Section'));
-const Details = lazy(() => import('./Details'));
+const Tile = lazy(() => import('../Tile'));
+const Section = lazy(() => import('../Section'));
+const Details = lazy(() => import('../Details'));
 
 const FilmsWithConsumer = () => {
     return (
