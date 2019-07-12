@@ -3,20 +3,20 @@ import React, {
     useContext
 } from 'react';
 
-import { FilmsContext } from '../../contexts/FilmsContext';
+import { PeopleContext } from '../../contexts/PeopleContext';
 
 const Tile = lazy(() => import('../Tile'));
 const Section = lazy(() => import('../Section'));
 const Details = lazy(() => import('../Details'));
 
-const FilmsWithContextHook = () => {
-    const {films, updatePeopleState} = useContext(FilmsContext);
+const PeopleWithContextHook = () => {
+    const {people, updatePeopleState} = useContext(PeopleContext);
 
     return (
         <Tile>
             <Section
-                count={films.count}
-                items={films.results && films.results.map((item) => {
+                count={people.count}
+                items={people.results && people.results.map((item) => {
                     return {
                         key: item.url,
                         displayText: item.title,
@@ -25,17 +25,17 @@ const FilmsWithContextHook = () => {
                 name="Films"
                 selectHandler={(e) => {
                     updatePeopleState({
-                        ...films,
-                        highlightedItem: films.results.filter(item => item.url === e.target.href)[0]
+                        ...people,
+                        highlightedItem: people.results.filter(item => item.url === e.target.href)[0]
                     })
                 }}
             />
             {
-                films.highlightedItem &&
-                <Details {...films.highlightedItem} />
+                people.highlightedItem &&
+                <Details {...people.highlightedItem} />
             }
         </Tile>
     )
 }
 
-export default FilmsWithContextHook;
+export default PeopleWithContextHook;

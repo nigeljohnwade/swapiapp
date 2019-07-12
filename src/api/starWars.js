@@ -1,5 +1,5 @@
 import { api as filmsApi } from '../models/filmsModel';
-const routes = {
+export const routes = {
     "people": "https://swapi.co/api/people/",
     "planets": "https://swapi.co/api/planets/",
     "species": "https://swapi.co/api/species/",
