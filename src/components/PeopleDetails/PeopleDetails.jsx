@@ -3,7 +3,7 @@ import React, {memo} from 'react';
 import OpeningCrawl from "../OpeningCrawl";
 import Credits from "../Credits";
 
-function Details({
+function PeopleDetails({
     opening_crawl,
     title,
     director,
@@ -26,4 +26,4 @@ function Details({
     )
 }
 
-export default memo(Details);
+export default memo(PeopleDetails);

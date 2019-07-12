@@ -4,7 +4,7 @@ import { withPeople } from '../../contexts/PeopleContext';
 
 const Tile = lazy(() => import('../Tile'));
 const Section = lazy(() => import('../Section'));
-const Details = lazy(() => import('../Details'));
+const Details = lazy(() => import('../FilmDetails'));
 
 const PeopleWithHOC = (props) => {
     const {people, updatePeopleState} = props.people;
@@ -16,7 +16,7 @@ const PeopleWithHOC = (props) => {
                 items={people.results && people.results.map((item) => {
                     return {
                         key: item.url,
-                        displayText: item.title,
+                        displayText: item.name,
                     }
                 })}
                 name="People"

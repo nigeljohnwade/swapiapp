@@ -7,10 +7,10 @@ import { FilmsContext } from '../../contexts/FilmsContext';
 
 const Tile = lazy(() => import('../Tile'));
 const Section = lazy(() => import('../Section'));
-const Details = lazy(() => import('../Details'));
+const Details = lazy(() => import('../FilmDetails'));
 
 const FilmsWithContextHook = () => {
-    const {films, updatePeopleState} = useContext(FilmsContext);
+    const {films, updateFilmsState} = useContext(FilmsContext);
 
     return (
         <Tile>
@@ -24,7 +24,7 @@ const FilmsWithContextHook = () => {
                 })}
                 name="Films"
                 selectHandler={(e) => {
-                    updatePeopleState({
+                    updateFilmsState({
                         ...films,
                         highlightedItem: films.results.filter(item => item.url === e.target.href)[0]
                     })

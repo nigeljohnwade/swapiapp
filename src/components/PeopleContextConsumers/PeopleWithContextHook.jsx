@@ -7,7 +7,7 @@ import { PeopleContext } from '../../contexts/PeopleContext';
 
 const Tile = lazy(() => import('../Tile'));
 const Section = lazy(() => import('../Section'));
-const Details = lazy(() => import('../Details'));
+const Details = lazy(() => import('../FilmDetails'));
 
 const PeopleWithContextHook = () => {
     const {people, updatePeopleState} = useContext(PeopleContext);
@@ -19,10 +19,10 @@ const PeopleWithContextHook = () => {
                 items={people.results && people.results.map((item) => {
                     return {
                         key: item.url,
-                        displayText: item.title,
+                        displayText: item.name,
                     }
                 })}
-                name="Films"
+                name="People"
                 selectHandler={(e) => {
                     updatePeopleState({
                         ...people,

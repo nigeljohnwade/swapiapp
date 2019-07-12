@@ -4,7 +4,7 @@ import { FilmsContext } from '../../contexts/FilmsContext';
 
 const Tile = lazy(() => import('../Tile'));
 const Section = lazy(() => import('../Section'));
-const Details = lazy(() => import('../Details'));
+const Details = lazy(() => import('../FilmDetails'));
 
 const FilmsWithConsumer = () => {
     return (

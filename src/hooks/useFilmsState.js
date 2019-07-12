@@ -22,7 +22,7 @@ function useFilmsState() {
         }
     });
 
-    return { films: films, updatePeopleState: updateFilmsState };
+    return { films, updateFilmsState };
 }
 
 export default useFilmsState;

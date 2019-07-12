@@ -4,7 +4,7 @@ import { withFilms } from '../../contexts/FilmsContext';
 
 const Tile = lazy(() => import('../Tile'));
 const Section = lazy(() => import('../Section'));
-const Details = lazy(() => import('../Details'));
+const Details = lazy(() => import('../FilmDetails'));
 
 const FilmsWithHOC = (props) => {
     const {films, updateFilmsState} = props.films;
