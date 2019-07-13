@@ -1,6 +1,6 @@
 import React, {
     memo,
-f} from 'react';
+} from 'react';
 
 const ListItem = ({children, ...rest}) => {
     return (
