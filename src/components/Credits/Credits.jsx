@@ -1,9 +1,6 @@
-import React from 'react';
+import React, {memo} from 'react';
 
-function Credits({
-    director,
-    producer,
-}) {
+function Credits({director, producer}) {
     return (
         <>
             <p>Director: {director}</p>
@@ -12,4 +9,4 @@ function Credits({
     )
 }
 
-export default Credits;
+export default memo(Credits);

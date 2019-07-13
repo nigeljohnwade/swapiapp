@@ -7,6 +7,7 @@ import useFilmsState from './hooks/useFilmsState';
 import usePeopleState from './hooks/usePeopleState';
 import { FilmsContext } from './contexts/FilmsContext';
 import { PeopleContext } from './contexts/PeopleContext';
+
 const FilmsWithConsumer = lazy(() => import('./components/FilmsContextConsumers/FilmsWithConsumer'));
 const Films = lazy(() => import('./components/FilmsContextConsumers/FilmsWithHOC'));
 const FilmsWithContextHook = lazy(() => import('./components/FilmsContextConsumers/FilmsWithContextHook'));
@@ -20,18 +21,22 @@ const App = () => {
     const peopleState = usePeopleState();
 
     return (
-        <Suspense fallback={<p>Loading</p>}>
-            <FilmsContext.Provider value={filmsState}>
-                <FilmsWithConsumer />
-                <Films />
-                <FilmsWithContextHook />
-            </FilmsContext.Provider>
-            <PeopleContext.Provider value={peopleState}>
-                <PeopleWithConsumer />
-                <People />
-                <PeopleWithContextHook />
-            </PeopleContext.Provider>
-        </Suspense>
+        <>
+            <Suspense fallback={<p>Loading</p>}>
+                <FilmsContext.Provider value={filmsState}>
+                    <FilmsWithConsumer/>
+                    <Films/>
+                    <FilmsWithContextHook/>
+                </FilmsContext.Provider>
+            </Suspense>
+            <Suspense fallback={<p>Loading</p>}>
+                <PeopleContext.Provider value={peopleState}>
+                    <PeopleWithConsumer/>
+                    <People/>
+                    <PeopleWithContextHook/>
+                </PeopleContext.Provider>
+            </Suspense>
+        </>
     );
 }
 

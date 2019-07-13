@@ -1,5 +1,6 @@
 import React, {
     lazy,
+    memo,
     useContext
 } from 'react';
 
@@ -38,4 +39,4 @@ const PeopleWithContextHook = () => {
     )
 }
 
-export default PeopleWithContextHook;
+export default memo(PeopleWithContextHook);

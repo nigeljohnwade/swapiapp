@@ -1,5 +1,6 @@
 import React, {
     lazy,
+    memo,
     useContext
 } from 'react';
 
@@ -38,4 +39,4 @@ const FilmsWithContextHook = () => {
     )
 }
 
-export default FilmsWithContextHook;
+export default memo(FilmsWithContextHook);

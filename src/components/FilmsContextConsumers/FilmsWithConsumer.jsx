@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import React, { lazy, memo } from 'react';
 
 import { FilmsContext } from '../../contexts/FilmsContext';
 
@@ -39,4 +39,4 @@ const FilmsWithConsumer = () => {
     )
 }
 
-export default FilmsWithConsumer;
+export default memo(FilmsWithConsumer);

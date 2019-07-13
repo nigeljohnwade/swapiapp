@@ -1,4 +1,7 @@
-import React, { lazy } from 'react';
+import React, {
+    lazy,
+    memo,
+} from 'react';
 
 import { withPeople } from '../../contexts/PeopleContext';
 
@@ -35,4 +38,4 @@ const PeopleWithHOC = (props) => {
     )
 }
 
-export default withPeople(PeopleWithHOC);
+export default memo(withPeople(PeopleWithHOC));

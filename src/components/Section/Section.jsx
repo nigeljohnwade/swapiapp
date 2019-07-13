@@ -1,4 +1,8 @@
-import React, { lazy, Suspense, memo } from 'react';
+import React, {
+    lazy,
+    memo,
+    Suspense,
+} from 'react';
 
 const List = lazy(() => import('../List'));
 const ListItem = lazy(() => import('../ListItem'));

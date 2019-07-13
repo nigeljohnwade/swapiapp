@@ -1,7 +1,10 @@
-import React, {memo} from 'react';
+import React, {
+    memo,
+    lazy,
+} from 'react';
 
-import OpeningCrawl from "../OpeningCrawl";
-import Credits from "../Credits";
+const OpeningCrawl = lazy(() => import("../OpeningCrawl"));
+const Credits = lazy(() => import("../Credits"));
 
 function FilmDetails({
     opening_crawl,

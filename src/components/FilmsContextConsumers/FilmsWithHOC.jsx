@@ -1,4 +1,7 @@
-import React, { lazy } from 'react';
+import React, {
+    lazy,
+    memo,
+} from 'react';
 
 import { withFilms } from '../../contexts/FilmsContext';
 
@@ -35,4 +38,4 @@ const FilmsWithHOC = (props) => {
     )
 }
 
-export default withFilms(FilmsWithHOC);
+export default memo(withFilms(FilmsWithHOC));
